@@ -1,0 +1,9 @@
+.root {
+    width: 100%;
+    display: flex;
+    flex-grow: 1;
+    height: calc(100% - 30px);
+    z-index: 6;
+    top: 30px;
+    position: absolute;
+}

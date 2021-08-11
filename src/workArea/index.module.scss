@@ -1,0 +1,88 @@
+.root {
+    box-sizing: border-box;
+    width: 20%;
+    height: 100%;
+
+
+    .workarea {
+        display: flex;
+
+        .name {
+            display: flex;
+            flex-direction: column;
+            width: 30%;
+            overflow: hidden;
+            white-space: nowrap;
+
+            .title {
+                width: 100%;
+                height: 30px;
+                line-height: 30px;
+                padding-left: 5px;
+                border-bottom: 2px solid var(--editor-border-background);
+            }
+
+            .content {
+                width: 100%;
+                padding-left: 2px;
+
+                .unselected {
+                    display: flex;
+                    align-items: center;
+                    width: fit-content;
+                }
+
+                .selected {
+                    display: flex;
+                    align-items: center;
+                    width: fit-content;
+                    background-color: #eca6ff;
+                }
+            }
+
+
+
+        }
+
+        .border {
+            width: 3px;
+            height: 32px;
+            background: var(--editor-border-background);
+        }
+
+        .value {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            width: 30%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+
+            .title {
+                width: 100%;
+                height: 30px;
+                line-height: 30px;
+                padding-left: 5px;
+                border-bottom: 2px solid var(--editor-border-background);
+                overflow: hidden;
+            }
+
+            .content {
+                width: 100%;
+                overflow: hidden;
+                padding-left: 2px;
+
+                .unselected {
+                    width: fit-content;
+                }
+
+                .selected {
+                    width: fit-content;
+                    background-color: #eca6ff;
+                }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,46 @@
+{
+  "scripts": {
+    "dev": "snowpack dev",
+    "build": "snowpack build",
+    "compile": "java org.antlr.v4.Tool -Dlanguage=JavaScript  -visitor ./src/core/compile/grammar/antlrjs/matlab.g4 -o ./src/core/compile/grammar/antlrjs"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.60",
+    "@material-ui/styles": "^4.11.4",
+    "@monaco-editor/react": "^4.2.1",
+    "antlr4": "^4.9.2",
+    "draft-js": "^0.11.7",
+    "echarts": "^5.0.2",
+    "echarts-gl": "^2.0.4",
+    "moo": "^0.5.1",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "zustand": "^3.5.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+    "@snowpack/plugin-dotenv": "^2.0.5",
+    "@snowpack/plugin-react-refresh": "^2.3.8",
+    "@snowpack/plugin-sass": "^1.1.2",
+    "@snowpack/plugin-typescript": "^1.1.1",
+    "@snowpack/plugin-webpack": "^2.3.1",
+    "@types/antlr4": "^4.7.2",
+    "@types/chai": "^4.2.13",
+    "@types/draft-js": "^0.10.44",
+    "@types/echarts": "^4.9.6",
+    "@types/moo": "^0.5.4",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/snowpack-env": "^2.3.2",
+    "@typescript-eslint/eslint-plugin": "^4.22.1",
+    "@typescript-eslint/parser": "^4.22.1",
+    "chai": "^4.2.0",
+    "eslint": "^7.20.0",
+    "eslint-plugin-react": "^7.23.2",
+    "rollup-plugin-node-polyfills": "^0.2.1",
+    "snowpack": "3.x",
+    "typescript": "^4.0.0"
+  }
+}

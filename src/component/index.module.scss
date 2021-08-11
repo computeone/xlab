@@ -1,0 +1,52 @@
+.panel {
+    padding: 10px 0 10px 0;
+    margin: auto;
+    align-items: center;
+    user-select: none;
+}
+
+.default-panel {
+    position: absolute;
+    left: 700px;
+    top: 400px;
+    height: 500px;
+    width: 240px;
+    border-radius: 6px;
+    background: #1d1e22;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, .5);
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-left: 2px;
+    background: #c6c6c6;
+    height: 30px;
+    line-height: 30px;
+
+    .panel-header-title {
+        font-size: 16px;
+        color: #1f0808;
+        padding-left: 5px;
+    }
+}
+
+.minimize {
+    display: flex;
+    flex-direction: column;
+    width: 20px;
+    text-align: center;
+    background: var(--editor-border-background);
+
+    .title {
+        background: #f7d0d0;
+        padding: 10px 0;
+
+        &:hover {
+            background: #f3b1b1;
+            cursor: default;
+        }
+    }
+
+}
