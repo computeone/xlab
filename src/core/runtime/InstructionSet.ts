@@ -298,7 +298,7 @@ export const instructionSet: any = {
 			const dim1 = operand[0].dim;
 			const dim2 = operand[1].dim;
 
-			if (dim1.length === 2 && dim2.length == 2 && dim1[1] === dim2[0]) {
+			if (dim1.length === 2 && dim2.length == 2 && dim1[0] === dim2[1]) {
 				runtime.push(multipleMatrix(operand[1] as any, operand[0] as any) as any);
 				return;
 			}
