@@ -3,7 +3,7 @@ import { DATAType } from "../../core/runtime";
 export const formatNumber = (data: DATAType | number, eps: number = 4) => {
 
     let value = data;
-    if ((data as DATAType).value) {
+    if ((data as DATAType).value !== undefined) {
         value = (data as DATAType).value;
     }
 

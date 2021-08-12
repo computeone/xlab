@@ -40,13 +40,26 @@ import {
     dot,
     exp,
     eye,
-    floor, horzcat, length, linspace,
+    floor,
+    horzcat,
+    iscolumn,
+    isempty,
+    ismatrix,
+    isrow,
+    isscalar,
+    issorted,
+    issortedrows,
+    isvector,
+    length,
+    linspace,
     log,
     log10,
     log2,
     logspace,
     meshgrid,
+    ndims,
     normalize,
+    numel,
     ones,
     pow2,
     rand,
@@ -503,6 +516,76 @@ export const StandardLibrary: any = {
         autoComplete: 'size(A)',
         call: (argv: any[]) => {
             return size(argv[0])
+        },
+    },
+    ndims: {
+        name: 'ndims',
+        autoComplete: 'ndims(A)',
+        call: (argv: any[]) => {
+            return ndims(argv[0])
+        },
+    },
+    numel: {
+        name: 'numel',
+        autoComplete: 'numel(A)',
+        call: (argv: any[]) => {
+            return numel(argv[0])
+        },
+    },
+    isscalar: {
+        name: 'isscalar',
+        autoComplete: 'isscalar(A)',
+        call: (argv: any[]) => {
+            return isscalar(argv[0])
+        },
+    },
+    issorted: {
+        name: 'issorted',
+        autoComplete: 'issorted(A)',
+        call: (argv: any[]) => {
+            return issorted(argv[0])
+        },
+    },
+    issortedrows: {
+        name: 'issortedrows',
+        autoComplete: 'issortedrows(A)',
+        call: (argv: any[]) => {
+            return issortedrows(argv[0])
+        },
+    },
+    isvector: {
+        name: 'isvector',
+        autoComplete: 'isvector(A)',
+        call: (argv: any[]) => {
+            return isvector(argv[0])
+        },
+    },
+    ismatrix: {
+        name: 'ismatrix',
+        autoComplete: 'ismatrix(A)',
+        call: (argv: any[]) => {
+            return ismatrix(argv[0])
+        },
+    },
+    isrow: {
+        name: 'isrow',
+        autoComplete: 'isrow(A)',
+        call: (argv: any[]) => {
+            return isrow(argv[0])
+        },
+    },
+    iscolumn: {
+        name: 'iscolumn',
+        autoComplete: 'iscolumn(A)',
+        call: (argv: any[]) => {
+            return iscolumn(argv[0])
+        },
+    },
+    isempty: {
+        name: 'isempty',
+        autoComplete: 'isempty(A)',
+        call: (argv: any[]) => {
+            return isempty(argv[0])
         },
     },
     cat: {

@@ -654,7 +654,10 @@ const ndgrid = () => {
  */
 
 export const length = (array: ARRAY) => {
-    return Math.max(...array.dim);
+    return {
+        type: Type.DOUBLE,
+        value: Math.max(...array.dim)
+    }
 }
 
 export const size = (array: ARRAY) => {
@@ -666,44 +669,200 @@ export const size = (array: ARRAY) => {
     }
 }
 
-const ndims = () => {
-
+export const ndims = (data: DATAType) => {
+    if (data.type === Type.ARRAY) {
+        return {
+            type: Type.DOUBLE,
+            value: data.dim.length
+        }
+    }
+    return {
+        type: Type.DOUBLE,
+        value: 0
+    }
 }
 
-const numel = () => {
-
+export const numel = (array: ARRAY) => {
+    return {
+        type: Type.DOUBLE,
+        value: calcDim(array.dim)
+    }
 }
 
-export const isscalar = () => {
+export const isscalar = (data: DATAType) => {
+    if (data.type === Type.ARRAY) {
+        if (checkArrayDimEqual(data.dim, [1, 1])) {
+            return {
+                type: Type.DOUBLE,
+                value: 1
+            }
+        }
+        return {
+            type: Type.DOUBLE,
+            value: 0
+        }
+    }
 
+    return {
+        type: Type.DOUBLE,
+        value: 1
+    }
 }
 
-export const issorted = () => {
+export const issorted = (data: DATAType) => {
+    if (data.type === Type.ARRAY) {
+        if (data.dim.length === 1) {
+            if (data.value.length === 0) {
+                return {
+                    type: Type.DOUBLE,
+                    value: 1
+                }
+            }
+            for (let i = 1; i < data.value.length; i++) {
+                if (data.value[i - 1] > data.value[i]) {
+                    return {
+                        type: Type.DOUBLE,
+                        value: 0
+                    }
+                }
+            }
+            return {
+                type: Type.DOUBLE,
+                value: 1
+            }
+        }
 
+        if (data.dim.length === 2) {
+            for (let i = 0; i < data.dim[0]; i++) {
+                for (let j = 1; j < data.dim[1]; j++) {
+                    if (arrayVistor(data, [i + 1, j]) > arrayVistor(data, [i + 1, j + 1])) {
+                        return {
+                            type: Type.DOUBLE,
+                            value: 0
+                        }
+                    }
+                }
+            }
+            return {
+                type: Type.DOUBLE,
+                value: 1
+            }
+        }
+
+    }
+    return {
+        type: Type.DOUBLE,
+        value: 0
+    }
 }
 
-export const issortedrows = () => {
+export const issortedrows = (data: DATAType) => {
+    if (data.type === Type.ARRAY) {
+        if (data.dim.length === 2) {
+            for (let i = 0; i < data.dim[0]; i++) {
+                for (let j = 1; j < data.dim[1]; j++) {
+                    if (arrayVistor(data, [i + 1, j]) > arrayVistor(data, [i + 1, j + 1])) {
+                        return {
+                            type: Type.DOUBLE,
+                            value: 0
+                        }
+                    }
+                }
+            }
+            return {
+                type: Type.DOUBLE,
+                value: 1
+            }
+        }
 
+    }
+    return {
+        type: Type.DOUBLE,
+        value: 0
+    }
 }
 
-export const isvector = () => {
-
+export const isvector = (data: DATAType) => {
+    if (data.type === Type.ARRAY) {
+        if (data.dim.length === 2 && (data.dim[0] === 1 || data.dim[1] === 1)) {
+            return {
+                type: Type.DOUBLE,
+                value: 1
+            }
+        }
+        return {
+            type: Type.DOUBLE,
+            value: 0
+        }
+    }
+    return {
+        type: Type.DOUBLE,
+        value: 1
+    }
 }
 
-export const ismatrix = () => {
-
+export const ismatrix = (data: DATAType) => {
+    if (data.type === Type.ARRAY) {
+        if (data.dim.length === 2) {
+            return {
+                type: Type.DOUBLE,
+                value: 1
+            }
+        }
+        return {
+            type: Type.DOUBLE,
+            value: 0
+        }
+    }
+    return {
+        type: Type.DOUBLE,
+        value: 1
+    }
 }
 
-export const isrow = () => {
-
+export const isrow = (data: DATAType) => {
+    if (data.type === Type.ARRAY) {
+        if (data.dim.length === 2 && data.dim[0] === 1) {
+            return {
+                type: Type.DOUBLE,
+                value: 1
+            }
+        }
+    }
+    return {
+        type: Type.DOUBLE,
+        value: 0
+    }
 }
 
-export const iscolumn = () => {
-
+export const iscolumn = (data: DATAType) => {
+    if (data.type === Type.ARRAY) {
+        if (data.dim.length === 2 && data.dim[1] === 1) {
+            return {
+                type: Type.DOUBLE,
+                value: 1
+            }
+        }
+    }
+    return {
+        type: Type.DOUBLE,
+        value: 0
+    }
 }
 
-export const isempty = () => {
-
+export const isempty = (data: DATAType) => {
+    if (data.type === Type.ARRAY) {
+        if (calcDim(data.dim) === 0) {
+            return {
+                type: Type.DOUBLE,
+                value: 1
+            }
+        }
+    }
+    return {
+        type: Type.DOUBLE,
+        value: 0
+    }
 }
 
 const sort = () => {
